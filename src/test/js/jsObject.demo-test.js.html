@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  
+		<link rel="stylesheet" href="../resources/qunit/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="../resources/qunit/qunit.js"></script>
+		<script type="text/javascript" src="../resources/jquery-1.7.1.min.js"></script>
+		
+		<script type="text/javascript" src="../../main/js/jsObject/demo/jsObject.demo.api.js"></script>
+		<script type="text/javascript" src="../../main/js/jsObject/demo/jsObject.demo.abs.js"></script>
+		<script type="text/javascript" src="../../main/js/jsObject/demo/jsObject.demo.impl.firstImplementation.js"></script>
+		<script type="text/javascript" src="../../main/js/jsObject/demo/jsObject.demo.impl.secondHeritanceLevel.js"></script>
+  
+	</head>
+	<body>
+		<script>
+	  
+		  module('Object structure testing');
+		
+		  
+		  asyncTest('Object structure first heritance level testing', function() {
+			  
+			  //expect(4);
+			  var g = jsObject.demo.impl.exampleOne();
+			  g();
+			  
+			  equal(g.getInitValue(), 0.1, "Value initialised during parent constructor are okay.");
+			  
+			  equal(g.privateFunc, null, "Private function can't be accessed");
+			  
+			  equal(g._protectedFunc(), 10, "Protected can be accessed, but _ indicate protected !");
+			  
+			  equal(g.implementationFunc(), 100, "An object implemented function is here");
+			  
+			  equal(g.publicOverrideFunc(), 100, "An inherited, overrited function is here");
+			  
+			  equal(g.publicOverrideSuperFunc(), 110, "An inherited, overrited with a call to super function is here");
+			  
+			  start();
+			  
+		  });
+		  
+	asyncTest('Object structure second heritance level test', function() {
+			  
+			  //expect(4);
+			  var g2 = jsObject.demo.impl.secondHeritanceLevel();
+			  g2();
+			  
+			  equal(g2.getInitValue(), 0.1, "Value initialised during grand' parent constructor are okay.");
+			  
+			  equal(g2.getInitValueFirstImpl(), 0.2, "Value initialised during parent constructor are okay.");
+			  
+			  equal(g2.privateFunc, null, "Private function can't be accessed");
+			  
+			  equal(g2._protectedFunc(), 10, "Protected can be accessed, but _ indicate protected !");
+			  
+			  equal(g2.implementationFunc(), 200, "An object implemented function is here");
+			  
+			  equal(g2.publicOverrideFunc(), 100, "An inherited, overrited function is here");
+			  
+			  equal(g2.publicOverrideSuperFunc(), 110, "An inherited, overrited with a call to super function is here");
+			  
+			  start();
+			  
+		  });
+		    
+		</script>
+		
+		<h1 id="qunit-header">QUnit example</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture"></div>
+	</body>
+</html>
