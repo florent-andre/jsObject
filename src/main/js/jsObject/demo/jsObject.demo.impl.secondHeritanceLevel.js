@@ -2,28 +2,6 @@
 // this is an implementation of the graph that manage metadata
 ;(function(){
 	
-//	Function.prototype.xtends = function(obj,source){
-//		//slice.call(arguments, 1).forEach( function(source) {
-//		  //    if (source) {
-//		          for (var prop in source) {
-//		            obj[prop] = source[prop];
-//		          }
-//		    //    }
-//		      //});
-//		return obj;
-//	}
-	
-	Function.prototype.xtends = function(source){
-		//slice.call(arguments, 1).forEach( function(source) {
-		  //    if (source) {
-		          for (var prop in source) {
-		            this[prop] = source[prop];
-		          }
-		    //    }
-		      //});
-//		return this;
-	}
-	
 	jsObject.demo.impl.secondHeritanceLevel = function() {
 		
 		var self;
@@ -35,10 +13,6 @@
 		};
 		
 		//heritance stuff
-		//main.prototype = jsObject.demo.impl.exampleOne();//_super;
-		//main = extend(main,_super);
-		//extend(main,_super);
-//		main.xtends(main, _super);
 		main.xtends(_super);
 		
 		//public
